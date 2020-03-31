@@ -1,0 +1,12 @@
+name: COVID-19-RSA
+title: COVID-19-RSA
+username:
+account: cnburger
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2027411
+bundleId: 2948349
+url: https://cnburger.shinyapps.io/COVID-19-RSA/
+when: 1585653725.02188
+asMultiple: FALSE
+asStatic: FALSE
