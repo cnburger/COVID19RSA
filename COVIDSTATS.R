@@ -72,9 +72,49 @@ hist_stats <- data.frame(
 #   geom_point() + 
 #   theme(axis.text.x = element_text(angle = 90))
 
-plot()
-  
 
+testPerDayGraph <- function()
+{
+  totCaseLarge10 <- seq(1,length(hist_stats$totTest),1)
+  plot(totCaseLarge10,hist_stats$totTest, type = "b",
+       xlab = "Each day after 10 cases were recorded",
+       ylab = "Cumulative tests",
+       main = "Total COVID-19 tests conducted",
+       lwd = 2,
+       axes = F,
+       col = "blue")
+  axis(side = 1, totCaseLarge10, las = 2)
+  axis(side = 2, las = 2)
+  abline(h = seq(2500,35000, by = 2500), col = "lightgray", lty = 3)
+  
+  
+  testPerday = 0
+  for(i in 2:length(hist_stats$totTest))
+  {
+    testPerday = cbind(testPerday,(hist_stats$totTest[i]- hist_stats$totTest[i-1]))
+  }
+  
+  plot.new()
+  barplot(testPerday, 
+          names = 1:length(testPerday),
+          col = "lightblue",
+          main = "COVID-19 tests per day",
+          xlab = "Each day after 10 cases were recorded",
+          ylab = "Total Tests",
+          axes = T,
+          las = 2,
+          yaxt = "n")
+  abline(h = testPerday, col = "lightgray", lty = 3)
+  #axis(side = 1,0:length(testPerday), las = 2)
+  axis(side = 2, sort(c(seq(1000,max(testPerday), by = 1000),testPerday)), las = 2)
+  
+  
+  
+  
+}
+
+testPerDayGraph()
+ 
 
 
 
